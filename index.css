@@ -1,0 +1,88 @@
+@font-face {
+    font-family: "main"; 
+    src: url("../font/main.otf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+  }
+
+html {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    background-color: rgb(1, 0, 36);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.panel {
+    background-color: #000000;
+    box-shadow: 0 0 20px rgba(68, 0, 255, 0.356);
+    border-radius: 80px;
+}
+
+/* Общие стили для всех блоков */
+.cont {
+    background-color: #00000041;
+    box-shadow: 0 0 20px rgb(255, 255, 255);
+    backdrop-filter: blur(10px);
+    min-width: 400px;
+    min-height: 1400px;
+    border-radius: 80px;
+    margin: 20px 0; /* Добавляем отступ между блоками */
+}
+/* Позиционирование трех блоков на десктопе */
+
+@media (max-width:1330px) {
+    .cont {
+        width: 90%; /* Ширина 90% от экрана */
+        min-width: auto; /* Убираем фиксированную минимальную ширину */
+        min-height: 300px; /* Уменьшаем высоту для мобилок */
+        border-radius: 40px; /* Меньший радиус скругления */
+    }
+    /* Изменяем позиционирование, чтобы блоки не соприкасались */
+}
+
+
+button {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    margin: 5px;
+    background-color: #00000069;
+    border-color: #000;
+    box-shadow: 0 0 20px rgba(0, 4, 255, 0.418);
+    border-radius: 90px;
+    border-style: dashed;
+    transition-duration: 450ms;
+}
+
+button:hover {
+    box-shadow: 0 0 20px rgb(255, 255, 255);
+    border-style: dotted;
+    transition-duration: 450ms;
+}
+
+.clear {
+    background-color: #ff4949;
+    border-color: #000;
+    border-radius: 90px;
+    border-style: dashed;
+    transition-duration: 450ms;
+}
+
+.clear:hover {
+    background-color: #f00000;
+    border-style: dotted;
+    transition-duration: 450ms;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "main";
+    color: #fff;
+}

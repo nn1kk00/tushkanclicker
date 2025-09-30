@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Tushkan Clicker</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta content="og:title" property="Tushkan Clicker">
+    <meta content="og:description" property="ъеъ">
+    <meta content="og:color" property="#4936b2">
+    <link type="Image/x-icon" href="logo.ico" rel="icon">
+    <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+    <style>
+      body {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+      }
+      
+      button {
+        -webkit-tap-highlight-color: transparent;
+        outline: none;
+      }
+      
+      .save-btn {
+        background: #4936b2;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 10px;
+        font-weight: bold;
+      }
+      
+      .save-btn:hover {
+        background: #3a2a8a;
+      }
+      
+      .share-btn {
+        background: #28a745;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 10px;
+        font-weight: bold;
+      }
+      
+      .share-btn:hover {
+        background: #218838;
+      }
+    </style>
+    <audio id="meow">
+      <source src="assets/song/meow.wav" type="audio/mpeg">
+    </audio>
+    <audio id="click">
+      <source src="assets/song/click.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="error">
+      <source src="assets/song/error.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="bounce">
+      <source src="assets/song/bounce.mp3" type="audio/mpeg">
+    </audio>
+  </head>
+  <body>
+    <center>
+      <div class="panel"><i><h1 style="color: #fff" id="nameElement">загрузка...</h1><h1 style="color: #a08fff;"><span id="ball1">0.0</span></h1></i></div>
+      <div class="cont">
+        <h2>У вас монет:</h2><br>
+        <h1 style="font-size: 74px;color: #a08fff;"><span id="ball">0.0</span></h1>
+        <h4>Энергии осталось: <br><span id="counter" style="color: #4423ff">500</span></h4>
+        <button id="click-btn" style="background-color: rgba(0,0,0,0);border-color: rgba(0,0,0,1); border-radius: 240px; border-style: dashed;"><img src="assets/img/logo.png" style="border-radius: 240px;box-shadow: 0 0 20px rgb(255, 255, 255);" width="240px" height="240px" alt=" "></button>
+        <hr><button onclick="shareProgress()"><h1>Вывести монеты в бота</h1></button><br><br><br>
+      </div>
+      <div class="cont" style="top: 100vh">
+        <h1 style="font-size: 48px;">Статистика</h1>
+        <hr>
+        <h2>Сила: <span id="silly" style="color: #a08fff">0</span>.<span id="silly1" style="color: #a08fff">01</span> монета/клик</h2>
+        <h2>Энергии: <span id="en1" style="color:#a08fff">500</span> энергии</h2>
+        <hr style="height: 3px; background-color: #000;"><h1 style="font-size: 48px;">Прокачки</h1>
+        <hr>
+        <h2>Текущая цена: <div id="price" style="color:#a08fff">100</div> монет</h2>
+        <h2>Сила: <span id="sily" style="color:#a08fff">0</span>.<span id="sily1" style="color:#a08fff">02</span> монета/клик</h2>
+        <h2>Энергии: <span id="en2" style="color:#a08fff">525</span> энергии</h2>
+        <button id="pr-btn"><h1>Прокачать</h1></button>
+        <br>
+      </div>
+    </center>
+    <h6 style="color: #0066ff1e">Created by <a style='color: #0066ff1e' href="https://nn1kk00.ru/">nn1kk00.ru</a></h6>
+    <script src='assets/js/index.js'></script>
+  </body>
+</html>

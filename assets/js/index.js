@@ -48,22 +48,23 @@ function shareProgress() {
     
     console.log('Вывод монет:', a + '.' + aa);
     
-    // ТОЛЬКО ОДНО ДЕЙСТВИЕ
-    const url = `https://t.me/TushkanRef_bot?start=Tushkan${a}`;
+    const coinsToSend = a;
+    const url = `https://t.me/TushkanRef_bot?start=Tushkan${coinsToSend}`;
     
-    // Для мобильных - deeplink, для десктопа - новая вкладка
-    if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
-        window.location.href = `tg://resolve?domain=TushkanRef_bot&start=Tushkan${a}`;
-        a = 0;
-        updateAllValues();
-        saveGame();
-        showNotification('Монеты выведены!');
+    // Сбрасываем монеты и сохраняем игру
+    a = 0;
+    updateAllValues();
+    saveGame();
+    
+    // Пытаемся открыть ссылку
+    const success = openInTelegram(url);
+    
+    if (success) {
+        showNotification('Монеты выведены! Открываем бота...');
     } else {
-        window.open(url, '_blank');
-        a = 0;
-        updateAllValues();
-        saveGame();
-        showNotification('Монеты выведены!');
+        showNotification('Монеты выведены! Но не удалось открыть бота. Скопируйте ссылку вручную.');
+        // Показываем ссылку для ручного копирования
+        console.log('Ссылка для ручного ввода:', url);
     }
 }
 
@@ -156,6 +157,34 @@ function loadGame() {
     return false;
 }
 
+function openInTelegram(url) {
+    if (window.Telegram && window.Telegram.WebApp) {
+        // Пробуем открыть через WebApp
+        try {
+            window.Telegram.WebApp.openLink(url);
+            return true;
+        } catch (e) {
+            console.error('Ошибка открытия ссылки через WebApp:', e);
+        }
+    }
+    
+    // Fallback методы
+    try {
+        window.open(url, '_blank');
+        return true;
+    } catch (e) {
+        console.error('Ошибка открытия ссылки через window.open:', e);
+    }
+    
+    try {
+        window.location.href = url;
+        return true;
+    } catch (e) {
+        console.error('Ошибка открытия ссылки через location.href:', e);
+    }
+    
+    return false;
+}
 // Функция для расчета энергии, накопленной вне игры (1 энергия в 5 секунд)
 function calculateOfflineEnergy(lastSaveTime) {
     const currentTime = Math.floor(Date.now() / 1000); // Текущее UNIX время в секундах

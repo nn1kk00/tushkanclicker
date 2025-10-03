@@ -1,5 +1,5 @@
 // Конфигурация сервера - ЗАМЕНИ НА СВОЙ IP/ДОМЕН
-const SERVER_URL = 'http://YOUR_SERVER_IP:3000/api'; // Ваш белый IP
+const SERVER_URL = 'http://91.201.52.157'; // Ваш белый IP
 const SYNC_ENABLED = true; // Включить синхронизацию
 
 // Улучшенная функция сохранения на сервер

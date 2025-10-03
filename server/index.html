@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tushkan Game Server</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .status { padding: 10px; border-radius: 5px; margin: 10px 0; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>🎮 Tushkan Game Server</h1>
+    <div id="status"></div>
+    
+    <h3>Тестирование API</h3>
+    <button onclick="testHealth()">Health Check</button>
+    <button onclick="testSave()">Test Save</button>
+    <button onclick="testLoad()">Test Load</button>
+    <button onclick="testStats()">Stats</button>
+    
+    <script>
+        const API_BASE = '/api';
+        
+        async function testHealth() {
+            try {
+                const response = await fetch(`${API_BASE}/health`);
+                const data = await response.json();
+                showStatus(JSON.stringify(data, null, 2), response.ok);
+            } catch (error) {
+                showStatus('Error: ' + error.message, false);
+            }
+        }
+        
+        async function testSave() {
+            const testData = {
+                userId: 'test_user_123',
+                gameData: {
+                    a: 100,
+                    aa: 50,
+                    n: 500,
+                    nn: 500,
+                    s: 1,
+                    ss: 0,
+                    c: 100,
+                    bounce: 1,
+                    lastSaveTime: Math.floor(Date.now() / 1000)
+                }
+            };
+            
+            try {
+                const response = await fetch(`${API_BASE}/save`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(testData)
+                });
+                const data = await response.json();
+                showStatus(JSON.stringify(data, null, 2), response.ok);
+            } catch (error) {
+                showStatus('Error: ' + error.message, false);
+            }
+        }
+        
+        async function testLoad() {
+            try {
+                const response = await fetch(`${API_BASE}/load?userId=test_user_123`);
+                const data = await response.json();
+                showStatus(JSON.stringify(data, null, 2), response.ok);
+            } catch (error) {
+                showStatus('Error: ' + error.message, false);
+            }
+        }
+        
+        async function testStats() {
+            try {
+                const response = await fetch(`${API_BASE}/stats`);
+                const data = await response.json();
+                showStatus(JSON.stringify(data, null, 2), response.ok);
+            } catch (error) {
+                showStatus('Error: ' + error.message, false);
+            }
+        }
+        
+        function showStatus(message, isSuccess) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.innerHTML = `<div class="status ${isSuccess ? 'success' : 'error'}">${message}</div>`;
+        }
+        
+        // Auto test on load
+        testHealth();
+    </script>
+</body>
+</html>
